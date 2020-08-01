@@ -1,0 +1,2 @@
+<!-- This is a template that can be called with the "render" keyword in another template -->
+<b><%= first_name(@user) %></b> (<%= @user.id %>)

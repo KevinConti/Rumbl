@@ -3,14 +3,15 @@ defmodule RumblWeb.UserController do
 
   alias Rumbl.Accounts
 
-  def show(conn, %{id: id}) do
+  def show(conn, %{"id" => id}) do
     case Accounts.get_user(id) do
       {:ok, user} ->
         render(conn, "show.html", user: user)
 
-      # TODO
-      err ->
-        render(conn, "index.html", Accounts.list_users())
+      # Show all users on error
+      # TODO: Should also show some sort of error
+      _err ->
+        render(conn, "index.html", users: Accounts.list_users())
     end
   end
 
